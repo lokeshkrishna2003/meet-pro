@@ -18,7 +18,8 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={{
       layout:{
-        logoImageUrl:'/icons/meetpro.svg'
+        logoImageUrl:'/icons/meetpro.svg',
+        socialButtonsVariant:'iconButton',
       },
       variables:{
         colorText:'#fff',
