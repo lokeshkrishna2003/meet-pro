@@ -49,7 +49,7 @@ const MobileNav = () => {
                 
                   {SidebarLinks.map((link) => {
                     const isActive =
-                      pathname === link.route 
+                      pathname === link.route || pathname.startsWith(`${link.route}/`);
                     return (
                         <SheetClose asChild key={link.route}> 
                       <Link
