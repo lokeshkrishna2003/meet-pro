@@ -1,4 +1,5 @@
 'use client'
+import MeetingTypeList from '@/components/MeetingTypeList';
 import React, { useEffect, useState } from 'react'
 
 
@@ -61,6 +62,7 @@ const page = () => {
             </div>
 
         </div>
+        <MeetingTypeList />
     </section>
   )
 }
