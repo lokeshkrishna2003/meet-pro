@@ -9,6 +9,15 @@ import {
 } from "@stream-io/video-react-sdk";
 import React from "react";
 import { useState } from "react";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
+  
 type CallLayoutType = "grid" | "speaker-right" | "speaker-left";
 
 const MeetingRoom = () => {
