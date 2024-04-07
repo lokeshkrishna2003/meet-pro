@@ -9,6 +9,7 @@ import MeetingModal from './MeetingModal'
 import { useUser } from '@clerk/nextjs'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { useRouter } from 'next/navigation'
+import { Textarea } from './ui/textarea'
 
 
 
@@ -104,6 +105,40 @@ const MeetingTypeList = () => {
       handleClick={()=>setMeetingState('isJoiningMeeting')}
       color='bg-yellow-1'
       />
+      {!callDetails ? (
+        <MeetingModal
+        isOpen={meetingState ==='isScheduleMeeting'}
+        onClose={()=>setMeetingState(undefined)}
+        title='creating meeting'
+        handleClick = {createMeeting}>
+          <div className='flex flex-col gap-2.5'> 
+          <label className='text-base text-normal leading-[22px] text-sky-2'>
+          Add a description
+          <Textarea className='border-none bg-dark-3 focus-visible:ring-0 focus-visible-ring-offseet-0' onChange={(e)=>{
+            setValues({...values , description : e.target.value})
+          }}/>
+          </label>
+          </div>
+        </MeetingModal>
+      ):(
+        <MeetingModal
+      isOpen={meetingState ==='isScheduleMeeting'}
+      onClose={()=>setMeetingState(undefined)}
+      title='meeting created'
+      className = 'text-center'
+      buttonText='copy meeting Link'
+      handleClick = {()=>{
+        // navigator.clipboard.writeText(meetingLink)
+        toast({
+          title : 'Link copied'
+        })
+      
+      }}
+      image='/icons/checked.svg'
+      buttonIcon='/icons/copy.svg'
+      
+/>
+      )}
 
       <MeetingModal
       isOpen={meetingState ==='isInstantMeeting'}

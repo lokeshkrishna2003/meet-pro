@@ -14,12 +14,12 @@ import { Button } from './ui/button'
   
 
 interface MeetingModalProps {
-    buttonText:string,
+    buttonText?:string,
     isOpen:boolean,
 children?:React.ReactNode,
     onClose:()=>void,
     className?:string,
-    title:string,
+    title?:string,
     handleClick?:()=>void,
     image?:string,
     buttonIcon?:string
