@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LayoutList } from "lucide-react";
+import { LayoutList, Users } from "lucide-react";
 
 type CallLayoutType = "grid" | "speaker-right" | "speaker-left";
 
@@ -76,6 +76,9 @@ const MeetingRoom = () => {
           </DropdownMenuContent>
         </DropdownMenu>
         <CallStatsButton/>
+        <button className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]" onClick={()=>setShowParticipants((prev)=>!prev)}>
+<Users size={20} className="text-white" />
+        </button>
         
       </div>
     </section>
