@@ -1,9 +1,10 @@
 'use client'
 import { DeviceSettings, VideoPreview, useCall } from '@stream-io/video-react-sdk'
 import React, { useEffect, useState } from 'react'
+import { Button } from './ui/button'
 
 
-const MeetingSetup = () => {
+const MeetingSetup = ({setIsSetUpComplete}:{setIsSetUpComplete : (value : boolean)=> void}) => {
     const [isMicCamToggleOn, setIsMicCamToggleOn] = useState(false)
 
     const call = useCall()
@@ -21,7 +22,7 @@ const MeetingSetup = () => {
 
     },[isMicCamToggleOn , call?.microphone,call?.camera])
   return (
-    <div className='flex h-screenw-full flex-col items-center justify-center gap-3 text-white'>
+    <div className='flex max-h-[300px] w-[400px] flex-col items-center justify-center gap-3 text-white'>
         <h1 className='text-2xl font-bold'>
             Setup
         </h1>
@@ -35,6 +36,13 @@ const MeetingSetup = () => {
             </label>
             <DeviceSettings/>
         </div>
+        <Button className='rounded-md bg-green-500  px-4 py-2.5' onClick={()=>{
+            call.join()
+            setIsSetUpComplete(true)
+        }}>
+            Join Meeting
+        
+        </Button>
      
     </div>
   )
