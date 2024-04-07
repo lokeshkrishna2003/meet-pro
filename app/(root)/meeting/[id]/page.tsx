@@ -1,4 +1,6 @@
 "use client"
+import MeetingRoom from '@/components/MeetingRoom'
+import MeetingSetup from '@/components/MeetingSetup'
 import { useUser } from '@clerk/nextjs'
 import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk'
 import React, { useState } from 'react'
@@ -11,9 +13,9 @@ const Meeting = ({params}:{params:{id:string}}) => {
     <StreamCall>
       <StreamTheme>
         {!isSetUpComplete ? (
-          'meeting setup'
+          <MeetingSetup/>
         ): (
-          'meeting room'
+          <MeetingRoom/>
         )}
       </StreamTheme>
     </StreamCall>
