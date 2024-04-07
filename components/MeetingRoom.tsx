@@ -20,10 +20,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LayoutList, Users } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import EndCallButton from "./EndCallButton";
 
 type CallLayoutType = "grid" | "speaker-right" | "speaker-left";
 
 const MeetingRoom = () => {
+  const searchParams = useSearchParams()
+  const isPersonalRoom = !!searchParams.get('personal')
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
   const [showParticipants, setShowParticipants] = useState(true);
   const CallLayout = () => {
@@ -79,6 +83,7 @@ const MeetingRoom = () => {
         <button className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]" onClick={()=>setShowParticipants((prev)=>!prev)}>
 <Users size={20} className="text-white" />
         </button>
+        {!isPersonalRoom && <EndCallButton/>}
         
       </div>
     </section>
