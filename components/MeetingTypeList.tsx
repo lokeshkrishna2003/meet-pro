@@ -10,6 +10,8 @@ import { useUser } from '@clerk/nextjs'
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { useRouter } from 'next/navigation'
 import { Textarea } from './ui/textarea'
+import ReactDatePicker from 'react-datepicker'
+
 
 
 
@@ -69,6 +71,7 @@ const MeetingTypeList = () => {
         })
       }
     }
+    const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`
 
   return (
     <section className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4'>
@@ -114,10 +117,26 @@ const MeetingTypeList = () => {
           <div className='flex flex-col gap-2.5'> 
           <label className='text-base text-normal leading-[22px] text-sky-2'>
           Add a description
-          <Textarea className='border-none bg-dark-3 focus-visible:ring-0 focus-visible-ring-offseet-0' onChange={(e)=>{
+          <Textarea className='border-none bg-dark-2 focus-visible:ring-0 focus-visible-ring-offseet-0' onChange={(e)=>{
             setValues({...values , description : e.target.value})
           }}/>
           </label>
+          </div>
+          <div className='flex w-full flex-col gap-2.5'>
+          <label className='text-base text-normal leading-[22px] text-sky-2'>
+            Select Date and Time
+            </label>
+            <ReactDatePicker 
+            selected={values.dateTime}
+            onChange={(e)=>{setValues({...values,dateTime : e!})}}
+            showTimeSelect
+            timeFormat='HH:mm'
+            timeIntervals={15}
+            timeCaption='time'
+            dateFormat='MMMM d,yyyy h:mm aa'
+            className='w-full rounded bg-dark-2 p-2 focus:outline-none'
+            />
+
           </div>
         </MeetingModal>
       ):(
@@ -128,7 +147,7 @@ const MeetingTypeList = () => {
       className = 'text-center'
       buttonText='copy meeting Link'
       handleClick = {()=>{
-        // navigator.clipboard.writeText(meetingLink)
+        navigator.clipboard.writeText(meetingLink)
         toast({
           title : 'Link copied'
         })
