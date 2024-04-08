@@ -45,6 +45,6 @@ return (startsAt && new Date(startsAt) > now)
 })
 let recordings;
 return {
-    endedCalls, recordings, upcomingCalls , setisLoading
+    endedCalls, recordings :Calls, upcomingCalls , isLoading
 }
 }
