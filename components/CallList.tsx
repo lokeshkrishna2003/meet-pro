@@ -91,7 +91,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
                 <MeetingCard
                     key={key}
                     icon={type==='ended'?'/icons/previous.svg':type==='upcoming'?'/icons/upcoming.svg':'/icons/Video.svg'}
-                    title={(meeting as Call).state?.custom.description.substring(0,20)|| meeting.filename.substring(0,20)  || 'No title'}
+                    title={(meeting as Call).state?.custom?.description?.substring(0,20)|| 'Personal Room' ||meeting.filename?.substring(0,20)  || 'No title'}
                     date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as Call).start_time.toLocaleString()}
                     isPreviousMeeting={type==='ended'}
                     buttonIcon1={type==='recordings'?'/icons/play.svg':undefined}
