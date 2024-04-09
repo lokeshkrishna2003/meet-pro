@@ -170,6 +170,19 @@ const MeetingTypeList = () => {
         
       
       />
+      <MeetingModal
+      isOpen={meetingState ==='isJoiningMeeting'}
+      onClose={()=>setMeetingState(undefined)}
+      title='Paste the meeting Link here'
+      className = 'text-center'
+      buttonText='Join Meeting'
+      handleClick = {()=>{
+        router.push(values.link)
+      
+      }}
+      >
+        
+      </MeetingModal>
     </section>
   )
 }
