@@ -95,7 +95,7 @@ const MeetingTypeList = () => {
       title='view recordings'
       description='checkout your recordings'
       handleClick={()=>{
-        const router = useRouter()
+        
         router.push('/recordings')
       
       }}
