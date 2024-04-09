@@ -43,8 +43,8 @@ const endedCalls = Calls.filter(({state:{startsAt,endedAt}}:Call)=>{
 const upcomingCalls = Calls.filter(({state:{startsAt}}:Call)=>{
 return (startsAt && new Date(startsAt) > now)
 })
-let recordings;
+let CallRecordings;
 return {
-    endedCalls, recordings :Calls, upcomingCalls , isLoading
+    endedCalls, CallRecordings:Calls, upcomingCalls , isLoading
 }
 }
