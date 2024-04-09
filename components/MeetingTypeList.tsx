@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useToast } from "@/components/ui/use-toast"
+import { Input } from "@/components/ui/input"
 
 import HomeCard from './HomeCard'
 import MeetingModal from './MeetingModal'
@@ -181,7 +182,8 @@ const MeetingTypeList = () => {
       
       }}
       >
-        
+        <Input className='border-none bg-dark-2 focus-visible:ring-0 focus-visible:ring-offset-0' placeholder='Meeting Link' onChange={(e)=>setValues({...values,link:e.target.value})}/>
+       
       </MeetingModal>
     </section>
   )
