@@ -3,7 +3,7 @@ import MeetingTypeList from '@/components/MeetingTypeList';
 import React, { useEffect, useState } from 'react'
 
 
-const page = () => {
+const Page = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -67,4 +67,5 @@ const page = () => {
   )
 }
 
-export default page
+
+export default Page
