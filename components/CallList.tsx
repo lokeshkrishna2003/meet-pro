@@ -1,4 +1,4 @@
-
+'@ts-ignore'
 "use client"
 import { UseGetCalls } from "@/hooks/UseGetCalls";
 import { Call, CallRecording } from "@stream-io/video-react-sdk";
@@ -91,8 +91,8 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
                 <MeetingCard
                     key={key}
                     icon={type==='ended'?'/icons/previous.svg':type==='upcoming'?'/icons/upcoming.svg':'/icons/Video.svg'}
-                    title={(meeting as Call).state?.custom?.description?.substring(0,20)|| 'Personal Room' ||(meeting as Call).filename?.substring(0,20)  || 'No title'}
-                    date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as Call).start_time.toLocaleString()}
+                    title={(meeting as Call).state?.custom?.description?.substring(0,20)|| 'Personal Room' ||(meeting as CallRecording).filename?.substring(0,20)  || 'No title'}
+                    date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as CallRecording).start_time?.toLocaleString()}
                     isPreviousMeeting={type==='ended'}
                     buttonIcon1={type==='recordings'?'/icons/play.svg':undefined}
                     handleClick={type==='recordings'?()=><Recordings/>:()=>router.push(`meeting/${(meeting as Call).id}`)}
