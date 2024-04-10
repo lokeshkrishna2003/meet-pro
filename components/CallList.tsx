@@ -85,18 +85,18 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
             // Generate a unique key for each item. If meeting.id is not unique across all types,
             // you can prepend the type or use the index as a fallback.
             const keyPrefix = type; // 'ended', 'upcoming', or 'recordings'
-            const key = meeting.id ? `${keyPrefix}-${meeting.id}` : `${keyPrefix}-${index}`;
+            const key = (meeting as Call).id ? `${keyPrefix}-${(meeting as Call).id}` : `${keyPrefix}-${index}`;
 
             return (
                 <MeetingCard
                     key={key}
                     icon={type==='ended'?'/icons/previous.svg':type==='upcoming'?'/icons/upcoming.svg':'/icons/Video.svg'}
-                    title={(meeting as Call).state?.custom?.description?.substring(0,20)|| 'Personal Room' ||meeting.filename?.substring(0,20)  || 'No title'}
+                    title={(meeting as Call).state?.custom?.description?.substring(0,20)|| 'Personal Room' ||(meeting as Call).filename?.substring(0,20)  || 'No title'}
                     date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as Call).start_time.toLocaleString()}
                     isPreviousMeeting={type==='ended'}
                     buttonIcon1={type==='recordings'?'/icons/play.svg':undefined}
-                    handleClick={type==='recordings'?()=><Recordings/>:()=>router.push(`meeting/${meeting.id}`)}
-                    link={type==='recordings'?`${<Recordings/>}`:`${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meeting.id}`}
+                    handleClick={type==='recordings'?()=><Recordings/>:()=>router.push(`meeting/${(meeting as Call).id}`)}
+                    link={type==='recordings'?`${<Recordings/>}`:`${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${(meeting as Call).id}`}
                     buttonText={type==='recordings'?'Play':'Start'}
                 />
             );
